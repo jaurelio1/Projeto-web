@@ -2,6 +2,9 @@ package br.com.ifpb.alocarsalas.servlet;
 
 import java.util.Comparator;
 import java.util.List;
+
+import br.com.ifpb.model.Professor;
+
 import java.util.ArrayList;
 import java.util.Collections;
 

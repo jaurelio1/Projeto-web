@@ -3,6 +3,8 @@ package br.com.ifpb.alocarsalas.servlet;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.ifpb.model.Professor;
+
 public class Banco {
 	private static List<Professor> lista = new ArrayList<>();
 	
