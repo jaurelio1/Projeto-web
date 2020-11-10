@@ -26,8 +26,7 @@ public class CadastrarProfessorServlet extends HttpServlet{
 		
 	
 		String nomeProfessor = request.getParameter("nomeProfessor");
-		//int mt = Integer.parseInt(request.getParameter("matriculaProfessor"));
-		int mt = 13;
+		int mt = Integer.parseInt(request.getParameter("matriculaProfessor"));
 		int ch = Integer.parseInt(request.getParameter("cargaHoraria"));		
 		
 		String nomeDisciplina = request.getParameter("nomeDisciplina");
@@ -60,9 +59,9 @@ public class CadastrarProfessorServlet extends HttpServlet{
 			professorDAO.save(professor);
 		}
 		
-		
+		//Cria professor caso ainda não tenha sido criado
 		DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
-		Disciplina disciplina = new Disciplina(nomeDisciplina,codigoDisciplina,qntAlunos,hrsAulas,dataAula,sala,professor);
+		Disciplina disciplina = new Disciplina(nomeDisciplina,codigoDisciplina,qntAlunos,hrsAulas,dataAula,sala);
 		disciplina.setInicioAula(inicioAula);
 		disciplina.setFimAula(fimAula);
 		disciplinaDAO.save(disciplina);
