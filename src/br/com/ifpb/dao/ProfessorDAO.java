@@ -1,6 +1,7 @@
 package br.com.ifpb.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.com.ifpb.data.SingletonConexao;
@@ -27,4 +28,32 @@ public class ProfessorDAO {
         }
 
     }
+	
+	
+	public Professor find(int id) {
+		
+		String sql = "SELECT * FROM professor WHERE matricula=?";
+
+	    Professor retorno = null;
+
+	    PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+	    try {
+
+	    	pst.setInt(1, id);
+	        ResultSet res = pst.executeQuery();
+
+	        if(res.next())
+	        {
+	            retorno = new Professor();
+	            retorno.setMatricula(res.getInt("matricula"));
+	            retorno.setNome(res.getString("nome"));
+	            retorno.setCargaHoraria(res.getInt("cargaHoraria"));
+	        }
+
+	    } catch (SQLException ex) {
+	        System.out.println(ex);
+
+	    }
+		return retorno;
+	}
 }

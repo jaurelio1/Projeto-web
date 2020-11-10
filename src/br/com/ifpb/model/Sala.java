@@ -2,21 +2,21 @@ package br.com.ifpb.model;
 
 public class Sala {
 	
-	private String id;
+	private int id;
 	
 	public Sala() {
 		
 	}
 
-	public Sala(String id) {
+	public Sala(int id) {
 		this.id = id;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

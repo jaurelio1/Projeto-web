@@ -16,25 +16,22 @@
 		<br/>
 		Carga Horária: <input type="text" name="cargaHoraria" />
 		<br/>
-		
 		<br/>
-	
-		Disciplina: <input type="text" name="nomeDisciplina"/>
+		Nome Disciplina: <input type="text" name="nomeDisciplina"/>
+		<br/>
+		Código Disciplina: <input type="text" name="codigoDisciplina"/>
 		<br/>
 		Quantidade de Alunos: <input type="text" name="qntAlunos"/>
 		<br/>
 		Horas/Aula: <input type="text" name="hrsAula"/>
-				
+		<br/>	
+		Dia da aula: <input type="text" name="dataAula"/> - metódo de inserção(12/12/12)
 		<br/>
-		<br/>
-				
-		Dia da aula: <input type="text" name="dataAula"/>
-		<br/>
-		Inicio da Aula: <input type="text" name="inicioAula"/> - metódo de inserção(HH:MM)
+		Início da Aula: <input type="text" name="inicioAula"/> - metódo de inserção(HH:MM)
 		<br/>
 		Fim da Aula: <input type="text" name="fimAula"/> - metódo de inserção(HH:MM)
 		<br/>
-		Sala <input type="text" name="idSala"/> - id da sala
+		Sala <input type="text" name="idSala"/> - codigo da sala
 		<br/>
 		<input type="submit"/>
 		 

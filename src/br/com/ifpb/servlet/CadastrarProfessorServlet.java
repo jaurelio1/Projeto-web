@@ -24,54 +24,58 @@ public class CadastrarProfessorServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException{
 		
+	
 		String nomeProfessor = request.getParameter("nomeProfessor");
-		String matriculaProfessor = request.getParameter("matriculaProfessor");
-		String cargaHoraria = request.getParameter("cargaHoraria");
-		int ch = Integer.parseInt(cargaHoraria);		
-		int mt = Integer.parseInt(matriculaProfessor);
-		
+		//int mt = Integer.parseInt(request.getParameter("matriculaProfessor"));
+		int mt = 13;
+		int ch = Integer.parseInt(request.getParameter("cargaHoraria"));		
 		
 		String nomeDisciplina = request.getParameter("nomeDisciplina");
-		String quantAlunos = request.getParameter("qntAlunos");
-		String horasAula = request.getParameter("hrsAula");
-		int qntAlunos = Integer.parseInt(quantAlunos);
-		int hrsAulas = Integer.parseInt(horasAula);
-		
+		int codigoDisciplina = Integer.parseInt(request.getParameter("codigoDisciplina"));
+		int qntAlunos = Integer.parseInt(request.getParameter("qntAlunos"));
+		int hrsAulas = Integer.parseInt(request.getParameter("hrsAula"));
 		String dataAula = request.getParameter("dataAula");
 		String inicioAula = request.getParameter("inicioAula");
 		String fimAula = request.getParameter("fimAula");
 		
-		String idSala = request.getParameter("idSala");
-		
-		/*Date diaAula = null;
-		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			diaAula = sdf.parse(dataAula);
-		}catch(ParseException e){
-			throw new ServletException(e);
-			
-		}*/
+		int idSala = Integer.parseInt(request.getParameter("idSala"));
 		
 		
+		
+		//Cria sala caso ainda não tenha sido criada
 		SalaDAO salaDAO = new SalaDAO();
+		Sala sala = new Sala(idSala);
+		
+		if (salaDAO.find(idSala) == null){
+			salaDAO.save(sala);
+		}
+		
+		
+		//Cria professor caso ainda não tenha sido criado
 		ProfessorDAO professorDAO = new ProfessorDAO();
-		DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
-		
-		Sala sala = salaDAO.save(idSala);
-		
 		Professor professor = new Professor(nomeProfessor, mt, ch);
 		professorDAO.save(professor);
 		
-		Disciplina disciplina = new Disciplina(nomeDisciplina,qntAlunos,hrsAulas,dataAula,sala,professor);
+		if (professorDAO.find(mt) == null){
+			professorDAO.save(professor);
+		}
+		
+		
+		DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+		Disciplina disciplina = new Disciplina(nomeDisciplina,codigoDisciplina,qntAlunos,hrsAulas,dataAula,sala,professor);
 		disciplina.setInicioAula(inicioAula);
 		disciplina.setFimAula(fimAula);
 		disciplinaDAO.save(disciplina);
+		
+		if (disciplinaDAO.find(codigoDisciplina) == null){
+			disciplinaDAO.save(disciplina);
+		}
 		
 		Banco banco = new Banco();
 		banco.adiciona(professor);
 		banco.adicionaDisciplina(disciplina);
 		
-		request.setAttribute("professor", professor);
+		request.setAttribute("professor", professor); 
 		
 		response.sendRedirect("listaProfessores");		
 		
