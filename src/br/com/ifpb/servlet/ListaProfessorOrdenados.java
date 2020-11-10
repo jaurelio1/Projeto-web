@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.ifpb.alocarsalas.servlet.OrganizarAtividades;
-import br.com.ifpb.model.Professor;
+import br.com.ifpb.model.Disciplina;
+import br.com.ifpb.util.OrganizarAtividades;
 
 @WebServlet("/professorOrganizados")
 public class ListaProfessorOrdenados extends HttpServlet{
@@ -24,7 +24,7 @@ public class ListaProfessorOrdenados extends HttpServlet{
 		OrganizarAtividades as = new OrganizarAtividades();
 		as.ordenaHorarios();
 		as.selectActivity();
-		List<Professor> professoresOrganizados = as.getSelectedActivity();
+		List<Disciplina> professoresOrganizados = as.getSelectedActivity();
 		
 		for(int i = 0; i < professoresOrganizados.size(); i++) {
 			System.out.println(professoresOrganizados.get(i).getNome());

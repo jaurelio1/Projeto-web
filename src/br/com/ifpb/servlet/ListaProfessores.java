@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.ifpb.alocarsalas.servlet.Banco;
-import br.com.ifpb.model.Professor;
+import br.com.ifpb.model.Disciplina;
+import br.com.ifpb.util.Banco;
 
 @WebServlet("/listaProfessores")
 public class ListaProfessores extends HttpServlet{
@@ -21,9 +21,9 @@ public class ListaProfessores extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException, ServletException{
 		Banco banco = new Banco();
-		List<Professor> professores = banco.getProfessores();
+		List<Disciplina> disciplinas = banco.getDisciplina();
 		
-		request.setAttribute("professores", professores);
+		request.setAttribute("disciplinas", disciplinas);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/listaProfessores.jsp");
 		rd.forward(request, response);

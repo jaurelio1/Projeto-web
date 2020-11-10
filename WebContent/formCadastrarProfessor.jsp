@@ -12,11 +12,13 @@
 	<form action="${linkServletCadastroProfessor}" method="post">
 		Nome do professor: <input type="text" name="nomeProfessor"/>
 		<br/>
+		Matricula: <input type="text" name="matriculaProfessor" />
+		<br/>
 		Carga Horária: <input type="text" name="cargaHoraria" />
-		
-		<br/>
 		<br/>
 		
+		<br/>
+	
 		Disciplina: <input type="text" name="nomeDisciplina"/>
 		<br/>
 		Quantidade de Alunos: <input type="text" name="qntAlunos"/>
@@ -31,6 +33,8 @@
 		Inicio da Aula: <input type="text" name="inicioAula"/> - metódo de inserção(HH:MM)
 		<br/>
 		Fim da Aula: <input type="text" name="fimAula"/> - metódo de inserção(HH:MM)
+		<br/>
+		Sala <input type="text" name="idSala"/> - id da sala
 		<br/>
 		<input type="submit"/>
 		 

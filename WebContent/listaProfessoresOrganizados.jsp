@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Lista Professores Ordenados</title>
+<title>Lista de Horários ordenados</title>
 </head>
 <body>
-Ordenados:
+Horários Ordenados:
 <div>
 	<ul>
 		<c:forEach items="${professoresOrganizados}" var="professor">			

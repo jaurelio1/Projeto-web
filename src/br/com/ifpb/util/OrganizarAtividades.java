@@ -1,17 +1,15 @@
-package br.com.ifpb.alocarsalas.servlet;
-
-import java.util.Comparator;
-import java.util.List;
-
-import br.com.ifpb.model.Professor;
+package br.com.ifpb.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+
+import br.com.ifpb.model.Disciplina;
 
 public class OrganizarAtividades{
 	private Banco banco = new Banco();
-	private List<Professor> lista = banco.getProfessores();
-	private List<Professor> novalista = new ArrayList<>();
+	private List<Disciplina> lista = banco.getDisciplina();
+	private List<Disciplina> novalista = new ArrayList<>();
 	
 	public void ordenaHorarios() {
 		Collections.sort(lista, new SortByRoll());
@@ -29,7 +27,7 @@ public class OrganizarAtividades{
 		}		
 	}
 	
-	public List<Professor> getSelectedActivity(){
+	public List<Disciplina> getSelectedActivity(){
 		return this.novalista;
 	}
 
