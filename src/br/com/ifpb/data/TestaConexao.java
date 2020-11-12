@@ -12,7 +12,7 @@ public class TestaConexao {
  
        SalaDAO salaDAO = new SalaDAO();
        
-       salaDAO.save(new Sala(24));
+       salaDAO.save(new Sala(24,"labProg"));
        
 	}
 		

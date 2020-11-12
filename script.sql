@@ -1,11 +1,14 @@
 CREATE DATABASE alocarsalas;
 USE alocarsalas;
 
-CREATE TABLE sala (id INTEGER PRIMARY KEY);
+CREATE TABLE sala (id INTEGER PRIMARY KEY,
+					nome VARCHAR(100));
 
 #INSERT INTO sala (id) VALUES("dsd");
 
 #SELECT * FROM disciplina;
+
+
 
 CREATE TABLE professor (matricula INTEGER PRIMARY KEY,
 						nome VARCHAR(100),
@@ -19,10 +22,10 @@ CREATE TABLE disciplina (codigo INTEGER PRIMARY KEY,
                         inicioAula VARCHAR(100),
                         fimAula VARCHAR(100),
                         idSala INTEGER,
-                        foreign key(idSala) references sala(id) on delete cascade);
+                        FOREIGN KEY(idSala) REFERENCES sala(id) ON DELETE CASCADE);
                         
-create table professor_disciplina(idProfessor integer,
-								idDisciplina integer,
-								foreign key (idProfessor) references professor(matricula) on delete cascade,
-								foreign key (idDisciplina) references disciplina(codigo) on delete cascade) ;
+CREATE TABLE professor_disciplina(idProfessor INTEGER,
+								idDisciplina INTEGER,
+								FOREIGN KEY (idProfessor) REFERENCES professor(matricula) ON DELETE CASCADE,
+								FOREIGN KEY (idDisciplina) REFERENCES disciplina(codigo) ON DELETE CASCADE) ;
 

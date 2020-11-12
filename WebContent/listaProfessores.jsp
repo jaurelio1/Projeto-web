@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Lista Professores</title>
+<title>Lista de Professores</title>
 </head>
 <body>
 Lista de Professores: <br/>

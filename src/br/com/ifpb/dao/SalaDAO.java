@@ -25,6 +25,7 @@ public class SalaDAO {
 	        {
 	            retorno = new Sala();
 	            retorno.setId(res.getInt("id"));
+	            retorno.setNome(res.getString("nome"));
 	        }
 
 	    } catch (SQLException ex) {
@@ -37,13 +38,14 @@ public class SalaDAO {
 	
 	public void save(Sala sl) {
 		
-		String sql = "INSERT  INTO sala (id) VALUES(?) ";
+		String sql = "INSERT  INTO sala (id,nome) VALUES(?,?) ";
 
         PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
 
         try {
 
             pst.setInt(1, sl.getId());
+            pst.setString(2, sl.getNome());
             pst.execute();
             pst.close();
 
