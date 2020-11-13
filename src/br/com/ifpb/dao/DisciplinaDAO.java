@@ -11,7 +11,7 @@ import br.com.ifpb.model.Professor;
 
 public class DisciplinaDAO {
 	
-	public	void save(Disciplina d)  {
+	public	void salvar(Disciplina d)  {
 		
         String sql = "INSERT  INTO disciplina (nome,codigo,quantidadeAlunos,cargaHoraria,diaAula,inicioAula,fimAula,idSala) VALUES(?,?,?,?,?,?,?,?) ";
 
@@ -38,12 +38,12 @@ public class DisciplinaDAO {
 	
 	
 	
-	public void addProfessores(Professor professor, int id) {
+	public void adicionarProfessores(Professor professor, int id) {
 		 ProfessorDisciplinaDAO pdDAO = new ProfessorDisciplinaDAO();
-		 pdDAO.save(professor.getMatricula(), id);
+		 pdDAO.salvar(professor.getMatricula(), id);
 	}
 	
-	public Disciplina find(int id) {
+	public Disciplina buscar(int id) {
 		
 		String sql = "SELECT * FROM disciplina WHERE codigo=?";
 
@@ -67,8 +67,8 @@ public class DisciplinaDAO {
 	            retorno.setDiaAula(res.getString("diaAula"));
 	            retorno.setInicioAula(res.getInt("inicioAula"));
 	            retorno.setFimAula(res.getInt("fimAula"));
-	            retorno.setProfessores(pdDAO.listarTudo(res.getInt("codigo")));
-	            retorno.setSala(salaDAO.find(res.getInt("idSala")));
+	            retorno.setProfessores(pdDAO.listarProfessorPorDisciplina(res.getInt("codigo")));
+	            retorno.setSala(salaDAO.buscar(res.getInt("idSala")));
 	            
 	        }
 
@@ -80,8 +80,8 @@ public class DisciplinaDAO {
 	}
 	
 	
-	 public ArrayList<Disciplina> listarTudo(String atributo)  {
-	        String sql =  "SELECT * FROM disciplina ORDER BY '"+atributo+"'";
+	 public ArrayList<Disciplina> listarTudo()  {
+	        String sql =  "SELECT * FROM disciplina";
 
 	        ArrayList<Disciplina> retorno = new ArrayList<Disciplina>();
 
@@ -91,7 +91,7 @@ public class DisciplinaDAO {
 	        SalaDAO salaDAO = new SalaDAO();
 
 	        ResultSet res = null;
-
+	        
 	        try {
 	            res = pst.executeQuery();
 
@@ -105,15 +105,15 @@ public class DisciplinaDAO {
 	                item.setDiaAula(res.getString("diaAula"));
 	                item.setInicioAula(res.getInt("inicioAula"));
 	                item.setFimAula(res.getInt("fimAula"));
-	                item.setProfessores(pdDAO.listarTudo(res.getInt("codigo")));
-	                item.setSala(salaDAO.find(res.getInt("idSala")));
+	                item.setProfessores(pdDAO.listarProfessorPorDisciplina(res.getInt("codigo")));
+	                item.setSala(salaDAO.buscar(res.getInt("idSala")));
 
 	                retorno.add(item);
+
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
-
 	        return retorno;
 
 	    }

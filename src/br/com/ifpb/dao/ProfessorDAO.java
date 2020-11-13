@@ -3,13 +3,14 @@ package br.com.ifpb.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import br.com.ifpb.data.SingletonConexao;
 import br.com.ifpb.model.Professor;
 
 public class ProfessorDAO {
 
-	public	void save(Professor p)  {
+	public	void salvar(Professor p)  {
 
         String sql = "INSERT  INTO professor (nome,matricula,cargaHoraria) VALUES(?,?,?) ";
 
@@ -30,7 +31,7 @@ public class ProfessorDAO {
     }
 	
 	
-	public Professor find(int id) {
+	public Professor buscar(int id) {
 		
 		String sql = "SELECT * FROM professor WHERE matricula=?";
 
@@ -56,4 +57,35 @@ public class ProfessorDAO {
 	    }
 		return retorno;
 	}
+	
+	public ArrayList<Professor> listarTudo()  {
+        String sql =  "SELECT * FROM professor";
+
+        ArrayList<Professor> retorno = new ArrayList<Professor>();
+
+        PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+        
+        ProfessorDisciplinaDAO pdDAO = new ProfessorDisciplinaDAO();
+
+        ResultSet res = null;
+        
+        try {
+            res = pst.executeQuery();
+
+            while(res.next())
+            {
+                Professor item = new Professor();
+                item.setMatricula(res.getInt("matricula"));
+                item.setCargaHoraria(res.getInt("cargaHoraria"));
+                item.setNome(res.getString("nome"));
+                item.setDisciplinas(pdDAO.listarDisciplinaPorProfessor(res.getInt("matricula")));
+                retorno.add(item);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return retorno;
+
+    }
 }

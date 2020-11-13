@@ -1,4 +1,4 @@
-package br.com.ifpb.servlet;
+package br.com.ifpb.servlet.professor;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.ifpb.dao.ProfessorDAO;
 import br.com.ifpb.model.Professor;
 
-@WebServlet("/cadastrarProfessor")
+@WebServlet("/professor/cadastrarProfessor")
 public class CadastrarProfessorServlet extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
@@ -20,23 +20,20 @@ public class CadastrarProfessorServlet extends HttpServlet{
 		
 	
 		String nomeProfessor = request.getParameter("nomeProfessor");
-		//int mt = Integer.parseInt(request.getParameter("matriculaProfessor"));
-		int mt = 13;
+		int mt = Integer.parseInt(request.getParameter("matriculaProfessor"));
 		int ch = Integer.parseInt(request.getParameter("cargaHoraria"));		
 		
 
 		//Cria professor caso ainda não tenha sido criado
 		ProfessorDAO professorDAO = new ProfessorDAO();
 		Professor professor = new Professor(nomeProfessor, mt, ch);
-		professorDAO.save(professor);
+		professorDAO.salvar(professor);
 		
-		if (professorDAO.find(mt) == null){
-			professorDAO.save(professor);
+		if (professorDAO.buscar(mt) == null){
+			professorDAO.salvar(professor);
 		}
 		
-		request.setAttribute("professor", professor); 
-		
-		response.sendRedirect("index.html");		
+		response.sendRedirect("listarProfessor");		
 		
 	}
 

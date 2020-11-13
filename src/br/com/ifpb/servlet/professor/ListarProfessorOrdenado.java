@@ -1,4 +1,4 @@
-package br.com.ifpb.servlet;
+package br.com.ifpb.servlet.professor;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +14,7 @@ import br.com.ifpb.model.Disciplina;
 import br.com.ifpb.util.OrganizarAtividades;
 
 @WebServlet("/professorOrganizados")
-public class ListaProfessorOrdenados extends HttpServlet{
+public class ListarProfessorOrdenado extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
 	

@@ -19,8 +19,8 @@ CREATE TABLE disciplina (codigo INTEGER PRIMARY KEY,
 						quantidadeAlunos INTEGER,
                         cargaHoraria INTEGER,
                         diaAula VARCHAR(100),
-                        inicioAula VARCHAR(100),
-                        fimAula VARCHAR(100),
+                        inicioAula INTEGER,
+                        fimAula INTEGER,
                         idSala INTEGER,
                         FOREIGN KEY(idSala) REFERENCES sala(id) ON DELETE CASCADE);
                         

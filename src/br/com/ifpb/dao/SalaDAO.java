@@ -3,13 +3,14 @@ package br.com.ifpb.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import br.com.ifpb.data.SingletonConexao;
 import br.com.ifpb.model.Sala;
 
 public class SalaDAO {
 
-	public Sala find(int id) {
+	public Sala buscar(int id) {
 		
 		String sql = "SELECT * FROM sala WHERE id=?";
 
@@ -36,7 +37,7 @@ public class SalaDAO {
 	}
 
 	
-	public void save(Sala sl) {
+	public void salvar(Sala sl) {
 		
 		String sql = "INSERT  INTO sala (id,nome) VALUES(?,?) ";
 
@@ -53,4 +54,32 @@ public class SalaDAO {
             e.printStackTrace();
         }
 	}
+	
+	public ArrayList<Sala> listarTudo()  {
+        String sql =  "SELECT * FROM sala";
+
+        ArrayList<Sala> retorno = new ArrayList<Sala>();
+
+        PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+
+        ResultSet res = null;
+        
+        try {
+            res = pst.executeQuery();
+
+            while(res.next())
+            {
+                Sala item = new Sala();
+                item.setId(res.getInt("id"));
+                item.setNome(res.getString("nome"));
+                
+                retorno.add(item);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return retorno;
+
+    }
 }

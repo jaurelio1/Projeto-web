@@ -1,4 +1,4 @@
-package br.com.ifpb.servlet;
+package br.com.ifpb.servlet.disciplina;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import br.com.ifpb.dao.SalaDAO;
 import br.com.ifpb.model.Disciplina;
 import br.com.ifpb.model.Sala;
 
-@WebServlet("/cadastrarDisciplina")
+@WebServlet("/disciplina/cadastrarDisciplina")
 public class CadastrarDisciplinaServlet extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
@@ -36,24 +36,21 @@ public class CadastrarDisciplinaServlet extends HttpServlet{
 		SalaDAO salaDAO = new SalaDAO();
 		Sala sala = new Sala(idSala,"sala");
 		
-		if (salaDAO.find(idSala) == null){
-			salaDAO.save(sala);
+		if (salaDAO.buscar(idSala) == null){
+			salaDAO.salvar(sala);
 		}
 		
-
-		//Cria disciplina caso ainda não tenha sido criada
 		DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
 		Disciplina disciplina = new Disciplina(nomeDisciplina,codigoDisciplina,qntAlunos,hrsAulas,dataAula,sala);
 		disciplina.setInicioAula(inicioAula);
 		disciplina.setFimAula(fimAula);
-		disciplinaDAO.save(disciplina);
+		disciplinaDAO.salvar(disciplina);
 		
-		if (disciplinaDAO.find(codigoDisciplina) == null){
-			disciplinaDAO.save(disciplina);
+		if (disciplinaDAO.buscar(codigoDisciplina) == null){
+			disciplinaDAO.salvar(disciplina);
 		}
 		
-		response.sendRedirect("index.html");		
-		
+		response.sendRedirect("listarDisciplina");
 	}
 
 }

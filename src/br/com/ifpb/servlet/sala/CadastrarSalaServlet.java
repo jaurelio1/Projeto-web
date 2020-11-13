@@ -1,4 +1,4 @@
-package br.com.ifpb.servlet;
+package br.com.ifpb.servlet.sala;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.ifpb.dao.SalaDAO;
 import br.com.ifpb.model.Sala;
 
-@WebServlet("/cadastrarSala")
+@WebServlet("/sala/cadastrarSala")
 public class CadastrarSalaServlet extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
@@ -22,15 +22,14 @@ public class CadastrarSalaServlet extends HttpServlet{
 		int idSala = Integer.parseInt(request.getParameter("idSala"));
 		String nomeSala = request.getParameter("nomeSala");
 	
-		//Cria sala caso ainda não tenha sido criada
 		SalaDAO salaDAO = new SalaDAO();
 		Sala sala = new Sala(idSala, nomeSala);
 		
-		if (salaDAO.find(idSala) == null){
-			salaDAO.save(sala);
+		if (salaDAO.buscar(idSala) == null){
+			salaDAO.salvar(sala);
 		}
 		
-		response.sendRedirect("index.html");		
+		response.sendRedirect("listarSala");	
 		
 	}
 }
