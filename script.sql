@@ -1,14 +1,12 @@
 CREATE DATABASE alocarsalas;
 USE alocarsalas;
 
-CREATE TABLE sala (id INTEGER PRIMARY KEY,
-					nome VARCHAR(100));
-
 #INSERT INTO sala (id) VALUES("dsd");
 
 #SELECT * FROM disciplina;
 
-
+CREATE TABLE sala (id INTEGER PRIMARY KEY,
+					nome VARCHAR(100));
 
 CREATE TABLE professor (matricula INTEGER PRIMARY KEY,
 						nome VARCHAR(100),

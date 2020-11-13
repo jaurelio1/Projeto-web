@@ -17,6 +17,8 @@ public class ProfessorDisciplinaDAO {
 
         List<Professor> retorno = new ArrayList<Professor>();
 
+        ProfessorDAO pDAO = new ProfessorDAO();
+        
         PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
 
         ResultSet res = null;
@@ -27,10 +29,7 @@ public class ProfessorDisciplinaDAO {
             
             while(res.next())
             {
-                Professor item = new Professor();
-                item.setMatricula(res.getInt("matricula"));
-                item.setNome(res.getString("nome"));
-                item.setCargaHoraria(res.getInt("cargaHoraria"));
+                Professor item = pDAO.buscar(res.getInt("idProfessor"));
                 retorno.add(item);
             }
         } catch (SQLException e) {
@@ -47,10 +46,10 @@ public class ProfessorDisciplinaDAO {
         List<Disciplina> retorno = new ArrayList<Disciplina>();
 
         PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+        
+        DisciplinaDAO dDAO = new DisciplinaDAO();
 
         ResultSet res = null;
-        
-        SalaDAO salaDAO = new SalaDAO();
 
         try {
         	pst.setInt(1, id);
@@ -58,16 +57,7 @@ public class ProfessorDisciplinaDAO {
             
             while(res.next())
             {
-            	Disciplina item = new Disciplina();
-                item.setNome(res.getString("nome"));
-                item.setCodigo(res.getInt("codigo"));
-                item.setQuantidadeAlunos(res.getInt("quantidadeAlunos"));
-                item.setCargaHoraria(res.getInt("cargaHoraria"));
-                item.setDiaAula(res.getString("diaAula"));
-                item.setInicioAula(res.getInt("inicioAula"));
-                item.setFimAula(res.getInt("fimAula"));
-                item.setProfessores(this.listarProfessorPorDisciplina(res.getInt("codigo")));
-                item.setSala(salaDAO.buscar(res.getInt("idSala")));
+            	Disciplina item = dDAO.buscar(res.getInt("idDisciplina"));
 
                 retorno.add(item);
             }

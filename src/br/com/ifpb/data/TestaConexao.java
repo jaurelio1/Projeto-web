@@ -4,9 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.ifpb.dao.DisciplinaDAO;
-import br.com.ifpb.dao.SalaDAO;
 import br.com.ifpb.model.Disciplina;
-import br.com.ifpb.model.Sala;
 
 public class TestaConexao {
 

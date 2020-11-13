@@ -17,6 +17,7 @@
 	</c:forEach>
 	
 	<a href="/alocarsalas/cadastrarDisciplina.jsp">Cadastrar Disciplina</a>
+	<a href="/alocarsalas/cadastrarProfessorNaDisciplina.jsp">Cadastrar Professor na Disciplina</a>
 	<a href="/alocarsalas/index.jsp">Home</a>
 	
 </body>
