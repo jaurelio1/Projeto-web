@@ -20,6 +20,6 @@
 	<br/>
 	<a href="${linkServletListarDisciplina}">Disciplina</a>
 	<br/>
-	<a href="/alocarsalas/horariosCompletos.jsp">Horários Completos</a>
+	<a href="${linkServletListarHorario}">Horários Completos</a>
 </body>
 </html>

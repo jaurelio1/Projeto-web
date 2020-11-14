@@ -13,7 +13,7 @@
 	Professores:
 	
 	<c:forEach var="professores" items="${professores}">
-		${professores.nome} - ${professores.matricula}
+		${professores.nome} - ${professores.matricula} - ${professores.cargaHoraria}
 	</c:forEach>
 	
 	<a href="/alocarsalas/cadastrarProfessor.jsp">Cadastrar Professor</a>

@@ -1,12 +1,9 @@
 package br.com.ifpb.model;
 
-import java.util.List;
-
 public class Professor{
 	private String nome;
 	private int matricula;
 	private int cargaHoraria;
-	private List<Disciplina> disciplinas;
 	
 	public Professor() {
 		
@@ -41,14 +38,5 @@ public class Professor{
 	public void setCargaHoraria(int cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
 	}
-
-	public List<Disciplina> getDisciplinas() {
-		return disciplinas;
-	}
-
-	public void setDisciplinas(List<Disciplina> disciplinas) {
-		this.disciplinas = disciplinas;
-	}
-	
 
 }

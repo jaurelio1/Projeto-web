@@ -65,8 +65,6 @@ public class ProfessorDAO {
 
         PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
         
-        ProfessorDisciplinaDAO pdDAO = new ProfessorDisciplinaDAO();
-
         ResultSet res = null;
         
         try {
@@ -78,7 +76,6 @@ public class ProfessorDAO {
                 item.setMatricula(res.getInt("matricula"));
                 item.setCargaHoraria(res.getInt("cargaHoraria"));
                 item.setNome(res.getString("nome"));
-                item.setDisciplinas(pdDAO.listarDisciplinaPorProfessor(res.getInt("matricula")));
                 retorno.add(item);
 
             }

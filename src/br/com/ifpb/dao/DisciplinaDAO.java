@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import br.com.ifpb.data.SingletonConexao;
 import br.com.ifpb.model.Disciplina;
-import br.com.ifpb.model.Professor;
 
 public class DisciplinaDAO {
 	
@@ -38,18 +37,12 @@ public class DisciplinaDAO {
 	
 	
 	
-	public void adicionarProfessores(Professor professor, int id) {
-		 ProfessorDisciplinaDAO pdDAO = new ProfessorDisciplinaDAO();
-		 pdDAO.salvar(professor.getMatricula(), id);
-	}
-	
 	public Disciplina buscar(int id) {
 		
 		String sql = "SELECT * FROM disciplina WHERE codigo=?";
 
 	    Disciplina retorno = null;
 	    SalaDAO salaDAO = new SalaDAO();
-	    ProfessorDisciplinaDAO pdDAO = new ProfessorDisciplinaDAO();
 
 	    PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
 	    try {
@@ -67,7 +60,6 @@ public class DisciplinaDAO {
 	            retorno.setDiaAula(res.getString("diaAula"));
 	            retorno.setInicioAula(res.getInt("inicioAula"));
 	            retorno.setFimAula(res.getInt("fimAula"));
-	            retorno.setProfessores(pdDAO.listarProfessorPorDisciplina(res.getInt("codigo")));
 	            retorno.setSala(salaDAO.buscar(res.getInt("idSala")));
 	            
 	        }
@@ -87,7 +79,6 @@ public class DisciplinaDAO {
 
 	        PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
 	        
-	        ProfessorDisciplinaDAO pdDAO = new ProfessorDisciplinaDAO();
 	        SalaDAO salaDAO = new SalaDAO();
 
 	        ResultSet res = null;
@@ -105,7 +96,6 @@ public class DisciplinaDAO {
 	                item.setDiaAula(res.getString("diaAula"));
 	                item.setInicioAula(res.getInt("inicioAula"));
 	                item.setFimAula(res.getInt("fimAula"));
-	                item.setProfessores(pdDAO.listarProfessorPorDisciplina(res.getInt("codigo")));
 	                item.setSala(salaDAO.buscar(res.getInt("idSala")));
 
 	                retorno.add(item);
@@ -117,5 +107,44 @@ public class DisciplinaDAO {
 	        return retorno;
 
 	    }
+	 
+	 
+	 public ArrayList<Disciplina> buscarPorSala(int id)  {
+	        String sql =  "SELECT * FROM disciplina WHERE idSala=?";
+
+	        ArrayList<Disciplina> retorno = new ArrayList<Disciplina>();
+
+	        PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+	        
+	        SalaDAO salaDAO = new SalaDAO();
+
+	        ResultSet res = null;
+	        
+	        try {
+	        	pst.setInt(1, id);
+	            res = pst.executeQuery();
+
+	            while(res.next())
+	            {
+	                Disciplina item = new Disciplina();
+	                item.setNome(res.getString("nome"));
+	                item.setCodigo(res.getInt("codigo"));
+	                item.setQuantidadeAlunos(res.getInt("quantidadeAlunos"));
+	                item.setCargaHoraria(res.getInt("cargaHoraria"));
+	                item.setDiaAula(res.getString("diaAula"));
+	                item.setInicioAula(res.getInt("inicioAula"));
+	                item.setFimAula(res.getInt("fimAula"));
+	                item.setSala(salaDAO.buscar(res.getInt("idSala")));
+
+	                retorno.add(item);
+
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return retorno;
+
+	    }
+	
 	
 }

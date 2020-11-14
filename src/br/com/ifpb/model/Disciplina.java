@@ -1,7 +1,5 @@
 package br.com.ifpb.model;
 
-import java.util.List;
-
 public class Disciplina {
 	private String nome;
 	private int codigo;
@@ -10,8 +8,10 @@ public class Disciplina {
 	private String diaAula;
 	private int inicioAula, fimAula, hora, min;
 	private Sala sala;
-	private List<Professor> professores;
- 	
+	
+	public Disciplina() {
+		
+	}
 	
 	public Disciplina(String nome,int codigo ,int quantidadeAlunos, int cargaHoraria, String diaAula, Sala sala) {
 		this.nome = nome;
@@ -21,19 +21,6 @@ public class Disciplina {
 		this.diaAula = diaAula;
 		this.sala = sala;
 	}
-	
-	public Disciplina() {
-		
-	}
-	
-	public List<Professor> getProfessores() {
-		return professores;
-	}
-
-	public void setProfessores(List<Professor> professores) {
-		this.professores = professores;
-	}
-
 	
 	public String getNome() {
 		return nome;

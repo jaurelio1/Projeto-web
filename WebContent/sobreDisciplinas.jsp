@@ -13,7 +13,7 @@
 	Disciplinas:
 	
 	<c:forEach var="disciplinas" items="${disciplinas}">
-		${disciplinas.nome} - ${disciplinas.codigo} - ${disciplinas.cargaHoraria}
+		${disciplinas.nome} - ${disciplinas.codigo} - ${disciplinas.cargaHoraria} 
 	</c:forEach>
 	
 	<a href="/alocarsalas/cadastrarDisciplina.jsp">Cadastrar Disciplina</a>

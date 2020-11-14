@@ -1,4 +1,4 @@
-package br.com.ifpb.servlet.disciplina;
+package br.com.ifpb.professor_disciplina;
 
 import java.io.IOException;
 
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.ifpb.dao.ProfessorDisciplinaDAO;
+import br.com.ifpb.model.ProfessorDisciplina;
 
 @WebServlet("/disciplina/cadastrarProfessorNaDisciplina")
 public class CadastrarProfessorNaDisciplinaServlet extends HttpServlet{
@@ -22,7 +23,7 @@ public class CadastrarProfessorNaDisciplinaServlet extends HttpServlet{
 		
 		ProfessorDisciplinaDAO pdDAO = new ProfessorDisciplinaDAO();
 		
-		pdDAO.salvar(matriculaProfessor, codigoDisciplina);
+		pdDAO.salvar(new ProfessorDisciplina(matriculaProfessor,codigoDisciplina));
 		
 		response.sendRedirect("listarDisciplina");
 	}

@@ -9,6 +9,7 @@ import java.util.List;
 import br.com.ifpb.data.SingletonConexao;
 import br.com.ifpb.model.Disciplina;
 import br.com.ifpb.model.Professor;
+import br.com.ifpb.model.ProfessorDisciplina;
 
 public class ProfessorDisciplinaDAO {
 
@@ -70,7 +71,7 @@ public class ProfessorDisciplinaDAO {
     }
 	
 	
-	public void salvar( int idProfessor, int idDisciplina)  {
+	public void salvar( ProfessorDisciplina pd)  {
 		
         String sql = "INSERT  INTO professor_disciplina (idProfessor, idDisciplina) VALUES(?,?) ";
 
@@ -78,8 +79,8 @@ public class ProfessorDisciplinaDAO {
     
         try {
 
-            pst.setInt(1, idProfessor);
-            pst.setInt(2, idDisciplina);
+            pst.setInt(1, pd.getIdProfessor());
+            pst.setInt(2, pd.getIdDisciplina());
            
             pst.execute();
             pst.close();
@@ -89,7 +90,5 @@ public class ProfessorDisciplinaDAO {
         }
 
     }
-	
-
 	
 }
