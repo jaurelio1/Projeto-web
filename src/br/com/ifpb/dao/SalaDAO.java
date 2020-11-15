@@ -82,4 +82,21 @@ public class SalaDAO {
         return retorno;
 
     }
+	
+	
+    public	void remover(int id)  {
+
+        String sql = "delete from sala where id=?";
+
+        PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+
+        try {
+            pst.setInt(1,id);
+            pst.execute();
+            pst.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

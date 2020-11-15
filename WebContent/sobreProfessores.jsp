@@ -10,13 +10,40 @@
 <title>Professores</title>
 </head>
 <body>
+
+	<a href="/alocarsalas/index.jsp">Home</a>
+	<a href="/alocarsalas/cadastrarProfessor.jsp">Cadastrar Professor</a>
+	<br/>
+	<br/>
+	
 	Professores:
 	
-	<c:forEach var="professores" items="${professores}">
-		${professores.nome} - ${professores.matricula} - ${professores.cargaHoraria}
+	<c:forEach var="professor" items="${professores}" varStatus="status">
+		<table border="1">
+			<tr>
+		        <th>Nome:</th>
+		        <td>${professor.nome}</td>
+		    </tr>
+		    <tr>
+		    	<th>Matrícula:</th>
+		        <td>${professor.matricula}</td>
+		    </tr>
+		   	<tr>
+		    	<th>Carga Horária:</th>
+		        <td>${professor.cargaHoraria}</td>
+		    </tr>
+		    
+		    <c:forEach var="disciplina" items="${disciplinas[status.index]}" varStatus="status2">
+		    	<tr>
+			    	<th>Disciplina</th>
+			        <td>${disciplina.nome}</td>
+		    	</tr>
+		    </c:forEach>
+		    
+		</table>
+		<br/>
 	</c:forEach>
 	
-	<a href="/alocarsalas/cadastrarProfessor.jsp">Cadastrar Professor</a>
-	<a href="/alocarsalas/index.jsp">Home</a>
+	
 </body>
 </html>

@@ -91,4 +91,21 @@ public class ProfessorDisciplinaDAO {
 
     }
 	
+	  public void remover(int idProfessor, int idDisciplina)  {
+
+	        String sql = "delete from professor_disciplina where idProfessor=? and idDisciplina=?";
+
+	        PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+
+	        try {
+	            pst.setInt(1,idProfessor);
+	            pst.setInt(1,idDisciplina);
+	            pst.execute();
+	            pst.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+
+	    }
+	
 }

@@ -145,6 +145,22 @@ public class DisciplinaDAO {
 	        return retorno;
 
 	    }
+	 
+	  public void remover(int codigo)  {
+
+	        String sql = "delete from disciplina where codigo=?";
+
+	        PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+
+	        try {
+	            pst.setInt(1, codigo);
+	            pst.execute();
+	            pst.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+
+	    }
 	
 	
 }

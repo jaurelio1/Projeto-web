@@ -27,15 +27,16 @@ public class ListarHorarioServlet extends HttpServlet {
 		
 		DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
 		
-		ArrayList<Sala> lista = salaDAO.listarTudo();
+		ArrayList<Sala> salas = salaDAO.listarTudo();
 		
-		List<Object> matriz = new ArrayList<Object>();
+		List<Object> disciplinas = new ArrayList<Object>();
 		
-		for (Sala item : lista) {
-			matriz.add(disciplinaDAO.buscarPorSala(item.getId()));
+		for (Sala item : salas) {
+			disciplinas.add(disciplinaDAO.buscarPorSala(item.getId()));
 		}
 	
-		request.setAttribute("matriz", matriz);
+		request.setAttribute("salas", salas);
+		request.setAttribute("disciplinas", disciplinas);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/horariosCompletos.jsp");
 		rd.forward(request, response);

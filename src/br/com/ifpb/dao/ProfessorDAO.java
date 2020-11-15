@@ -85,4 +85,20 @@ public class ProfessorDAO {
         return retorno;
 
     }
+	
+	  public void remover(int matricula)  {
+
+	        String sql = "delete from professor where matricula=?";
+
+	        PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+
+	        try {
+	            pst.setInt(1,matricula);
+	            pst.execute();
+	            pst.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+
+	    }
 }

@@ -10,13 +10,26 @@
 <title>Salas</title>
 </head>
 <body>
-	Salas:
 	
-	<c:forEach var="salas" items="${salas}">
-		${salas.nome} - ${salas.id}
-	</c:forEach>
-	
-	<a href="/alocarsalas/cadastrarSala.jsp">Cadastrar Sala</a>
 	<a href="/alocarsalas/index.jsp">Home</a>
+	<a href="/alocarsalas/cadastrarSala.jsp">Adicionar</a>
+	<br/>
+	<br/>
+		Salas:
+		
+		<c:forEach var="sala" items="${salas}">
+			<table border="1">
+				<tr>
+			       <th>Nome:</th>
+			       <td>${sala.nome}</td>
+		   		</tr>
+			    <tr>
+			        <th>Código:</th>
+			        <td>${sala.id}</td>
+			    </tr>
+			</table>
+			<br/>
+		</c:forEach>
+		
 </body>
 </html>

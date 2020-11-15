@@ -10,15 +10,41 @@
 <title>Disciplinas</title>
 </head>
 <body>
+	
+	<a href="/alocarsalas/index.jsp">Home</a>
+	<a href="/alocarsalas/cadastrarDisciplina.jsp">Adicionar Disciplina</a>
+	<a href="/alocarsalas/cadastrarProfessorNaDisciplina.jsp">Adicionar Professor na Disciplina</a>
+	
+	<br/>
+	<br/>
+
 	Disciplinas:
 	
-	<c:forEach var="disciplinas" items="${disciplinas}">
-		${disciplinas.nome} - ${disciplinas.codigo} - ${disciplinas.cargaHoraria} 
+	<c:forEach var="disciplina" items="${disciplinas}" varStatus="status">
+		<table border="1">
+			<tr>
+			    <th>Nome:</th>
+			    <td>${disciplina.nome}</td>
+	   		</tr>
+		    <tr>
+		    	<th>Código:</th>
+		    	<td>${disciplina.codigo}</td>
+		    </tr>
+		    <tr>
+		    	<th>Carga Horária:</th>
+		    	<td>${disciplina.cargaHoraria} </td>
+		    </tr>
+		    
+		     <c:forEach var="professor" items="${professores[status.index]}" varStatus="status2">
+		    	<tr>
+			    	<th>Professor</th>
+			        <td>${professor.matricula}</td>
+		    	</tr>
+		    </c:forEach>
+		    
+		</table>
+		<br/>
 	</c:forEach>
-	
-	<a href="/alocarsalas/cadastrarDisciplina.jsp">Cadastrar Disciplina</a>
-	<a href="/alocarsalas/cadastrarProfessorNaDisciplina.jsp">Cadastrar Professor na Disciplina</a>
-	<a href="/alocarsalas/index.jsp">Home</a>
 	
 </body>
 </html>

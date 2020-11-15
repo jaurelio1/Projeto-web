@@ -1,4 +1,4 @@
-package br.com.ifpb.professor_disciplina;
+package br.com.ifpb.servlet.professor_disciplina;
 
 import java.io.IOException;
 
