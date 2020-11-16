@@ -12,7 +12,8 @@
 <body>
 
 	<a href="/alocarsalas/index.jsp">Home</a>
-	<a href="/alocarsalas/cadastrarProfessor.jsp">Cadastrar Professor</a>
+	<a href="/alocarsalas/cadastrarProfessor.jsp">Adicionar</a>
+	<a href="/alocarsalas/excluirProfessor.jsp">Excluir</a>
 	<br/>
 	<br/>
 	

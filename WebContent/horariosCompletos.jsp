@@ -8,6 +8,9 @@
 <title>Lista de Horários</title>
 </head>
 <body>
+<a href="/alocarsalas/index.jsp">Home</a>
+<br/>
+
 	Horários:
 	
 	<c:forEach var="sala" items="${salas}" varStatus="status">

@@ -13,6 +13,7 @@
 	
 	<a href="/alocarsalas/index.jsp">Home</a>
 	<a href="/alocarsalas/cadastrarSala.jsp">Adicionar</a>
+	<a href="/alocarsalas/excluirSala.jsp">Excluir</a>
 	<br/>
 	<br/>
 		Salas:

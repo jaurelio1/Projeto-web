@@ -13,7 +13,9 @@
 	
 	<a href="/alocarsalas/index.jsp">Home</a>
 	<a href="/alocarsalas/cadastrarDisciplina.jsp">Adicionar Disciplina</a>
+	<a href="/alocarsalas/excluirDisciplina.jsp">Excluir Disciplina</a>
 	<a href="/alocarsalas/cadastrarProfessorNaDisciplina.jsp">Adicionar Professor na Disciplina</a>
+	<a href="/alocarsalas/excluirProfessorDaDisciplina.jsp">Excluir Professor da Disciplina</a>
 	
 	<br/>
 	<br/>

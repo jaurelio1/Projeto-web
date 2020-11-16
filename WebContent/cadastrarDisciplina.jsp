@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>Cadastro Disciplina</title>
 </head>
+<a href="/alocarsalas/index.jsp">Home</a>
+<br/>
+
 <body>
 	<form action="${linkServletCadastroDisciplina}" method="post">
 		Nome: <input type="text" name="nomeDisciplina"/>

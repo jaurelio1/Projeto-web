@@ -99,7 +99,7 @@ public class ProfessorDisciplinaDAO {
 
 	        try {
 	            pst.setInt(1,idProfessor);
-	            pst.setInt(1,idDisciplina);
+	            pst.setInt(2,idDisciplina);
 	            pst.execute();
 	            pst.close();
 	        } catch (SQLException e) {
