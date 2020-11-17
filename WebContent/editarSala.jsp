@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:url value="/sala/cadastrarSala" var="linkServletCadastroSala"/>
+<c:url value="/sala/editarSala" var="linkServletEditarSala"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
 <a href="/alocarsalas/index.jsp">Home</a>
 <br/>
 
-	<form action="${linkServletCadastroSala}" method="post">
+	<form action="${linkServletEditarSala}" method="post">
 		Nome: <input type="text" name="nomeSala"/>
 		<br/>
 		Código: <input type="text" name="idSala" />

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.List,br.com.ifpb.model.Professor"%>
+<%@ page import="java.util.List,br.com.alocarsalas.model.Professor"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -13,11 +13,13 @@
 
 	<a href="/alocarsalas/index.jsp">Home</a>
 	<a href="/alocarsalas/cadastrarProfessor.jsp">Adicionar</a>
+	<a href="/alocarsalas/editarProfessor.jsp">Editar</a>
 	<a href="/alocarsalas/excluirProfessor.jsp">Excluir</a>
 	<br/>
 	<br/>
 	
 	Professores:
+	<br/>
 	
 	<c:forEach var="professor" items="${professores}" varStatus="status">
 		<table border="1">

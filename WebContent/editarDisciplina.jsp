@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:url value="/disciplina/cadastrarDisciplina" var="linkServletCadastroDisciplina"/>
+<c:url value="/disciplina/editarDisciplina" var="linkServletEditarDisciplina"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
 <br/>
 
 <body>
-	<form action="${linkServletCadastroDisciplina}" method="post">
+	<form action="${linkServletEditarDisciplina}" method="post">
 		Nome: <input type="text" name="nomeDisciplina"/>
 		<br/>
 		Código: <input type="text" name="codigoDisciplina"/>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.List,br.com.ifpb.model.Sala"%>
+<%@ page import="java.util.List,br.com.alocarsalas.model.Sala"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -13,6 +13,7 @@
 	
 	<a href="/alocarsalas/index.jsp">Home</a>
 	<a href="/alocarsalas/cadastrarSala.jsp">Adicionar</a>
+	<a href="/alocarsalas/editarSala.jsp">Editar</a>
 	<a href="/alocarsalas/excluirSala.jsp">Excluir</a>
 	<br/>
 	<br/>
@@ -26,7 +27,7 @@
 		   		</tr>
 			    <tr>
 			        <th>Código:</th>
-			        <td>${sala.id}</td>
+			        <td>${sala.codigo}</td>
 			    </tr>
 			</table>
 			<br/>

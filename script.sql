@@ -5,7 +5,7 @@ USE alocarsalas;
 
 #SELECT * FROM disciplina;
 
-CREATE TABLE sala (id INTEGER PRIMARY KEY,
+CREATE TABLE sala (codigo INTEGER PRIMARY KEY,
 					nome VARCHAR(100));
 
 CREATE TABLE professor (matricula INTEGER PRIMARY KEY,
@@ -17,10 +17,10 @@ CREATE TABLE disciplina (codigo INTEGER PRIMARY KEY,
 						quantidadeAlunos INTEGER,
                         cargaHoraria INTEGER,
                         diaAula VARCHAR(100),
-                        inicioAula INTEGER,
-                        fimAula INTEGER,
+                        inicioAula VARCHAR(100),
+                        fimAula VARCHAR(100),
                         idSala INTEGER,
-                        FOREIGN KEY(idSala) REFERENCES sala(id) ON DELETE CASCADE);
+                        FOREIGN KEY(idSala) REFERENCES sala(codigo) ON DELETE CASCADE);
                         
 CREATE TABLE professor_disciplina(idProfessor INTEGER,
 								idDisciplina INTEGER,

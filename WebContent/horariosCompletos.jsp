@@ -10,24 +10,28 @@
 <body>
 <a href="/alocarsalas/index.jsp">Home</a>
 <br/>
+<br/>
 
 	Horários:
+	<br/>
 	
 	<c:forEach var="sala" items="${salas}" varStatus="status">
 	<table border="1">
 			
-		<p> Sala: ${sala.nome}   Código: ${sala.id} <p/>
+		<p> Sala: ${sala.nome}   Código: ${sala.codigo} <p/>
 		    
 	     <c:forEach var="disciplina" items="${disciplinas[status.index]}" varStatus="status2">
 	     	
 	     	<tr>
 		    	<th>Disciplina</th>
+		    	<th>Dia</th>
 		        <th>Início da Aula</th>
 		        <th>Fim da Aula</th>
 		         
 	    	</tr>
 	    	<tr>
 		        <td>${disciplina.nome}</td>
+		        <td>${disciplina.diaAula}</td>
 		        <td>${disciplina.inicioAula}</td>
 		        <td>${disciplina.fimAula}</td>
 	    	</tr>
