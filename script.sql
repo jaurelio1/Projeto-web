@@ -1,9 +1,11 @@
-CREATE DATABASE alocarsalas;
-USE alocarsalas;
+#CREATE DATABASE alocarsalas;
+#USE alocarsalas;
 
 #INSERT INTO sala (id) VALUES("dsd");
 
-#SELECT * FROM disciplina;
+SELECT * FROM sala;
+
+USE heroku_fa606a17340eaa3;
 
 CREATE TABLE sala (codigo INTEGER PRIMARY KEY,
 					nome VARCHAR(100));

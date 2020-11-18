@@ -7,10 +7,10 @@ import java.sql.SQLException;
 
 public class SingletonConexao {
 
-    private static final String banco = "jdbc:mysql://localhost:3306/alocarsalas?autoReconnect=true&useSSL=false";
+    private static final String banco = "jdbc:mysql://us-cdbr-east-02.cleardb.com:3306/heroku_fa606a17340eaa3";
     private static final String driver = "com.mysql.cj.jdbc.Driver";
-    private static final String usuario = "root";
-    private static final String senha = "root123";
+    private static final String usuario = "b4b6da8dfa15bf";
+    private static final String senha = "5392d1e5";
 
     private static Connection con = null;
 
