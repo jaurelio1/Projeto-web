@@ -27,7 +27,7 @@ public class CadastrarProfessorServlet extends HttpServlet{
 		//Cria professor caso ainda não tenha sido criado
 		ProfessorDAO professorDAO = new ProfessorDAO();
 		Professor professor = new Professor(nomeProfessor, mt, ch);
-		professorDAO.salvar(professor);
+		
 		
 		if (professorDAO.buscar(mt) == null){
 			professorDAO.salvar(professor);

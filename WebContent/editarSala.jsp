@@ -9,7 +9,7 @@
 <title>Cadastro Sala</title>
 </head>
 <body>
-<a href="/alocarsalas/index.jsp">Home</a>
+<a href="../index.jsp">Home</a>
 <br/>
 
 	<form action="${linkServletEditarSala}" method="post">

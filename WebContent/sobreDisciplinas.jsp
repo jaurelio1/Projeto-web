@@ -11,11 +11,12 @@
 </head>
 <body>
 	
-	<a href="/alocarsalas/index.jsp">Home</a>
-	<a href="/alocarsalas/cadastrarDisciplina.jsp">Adicionar Disciplina</a>
-	<a href="/alocarsalas/excluirDisciplina.jsp">Excluir Disciplina</a>
-	<a href="/alocarsalas/cadastrarProfessorNaDisciplina.jsp">Adicionar Professor na Disciplina</a>
-	<a href="/alocarsalas/excluirProfessorDaDisciplina.jsp">Excluir Professor da Disciplina</a>
+	<a href="../index.jsp">Home</a>
+	<a href="/cadastrarDisciplina.jsp">Adicionar Disciplina</a>
+	<a href="/excluirDisciplina.jsp">Excluir Disciplina</a>
+	<a href="/editarDisciplina.jsp">Editar Disciplina</a>
+	<a href="/cadastrarProfessorNaDisciplina.jsp">Adicionar Professor na Disciplina</a>
+	<a href="/excluirProfessorDaDisciplina.jsp">Excluir Professor da Disciplina</a>
 	
 	<br/>
 	<br/>
@@ -35,6 +36,21 @@
 		    <tr>
 		    	<th>Carga Horária:</th>
 		    	<td>${disciplina.cargaHoraria} </td>
+		    </tr>
+		    
+		     <tr>
+		    	<th>Dia da aula</th>
+		    	<td>${disciplina.diaAula} </td>
+		    </tr>
+		    
+		     <tr>
+		    	<th>Início da Aula:</th>
+		    	<td>${disciplina.inicioAula} </td>
+		    </tr>
+		    
+		    <tr>
+		    	<th>Fim da Aula:</th>
+		    	<td>${disciplina.fimAula} </td>
 		    </tr>
 		    
 		     <c:forEach var="professor" items="${professores[status.index]}" varStatus="status2">

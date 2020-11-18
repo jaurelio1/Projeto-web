@@ -9,7 +9,7 @@
 <title>Cadastro de Professor na Disciplina</title>
 </head>
 <body>
-<a href="/alocarsalas/index.jsp">Home</a>
+<a href="../index.jsp">Home</a>
 <br/>
 	<form action="${linkServletCadastroProfessorNaDisciplina}" method="post">		
 		Código Disciplina: <input type="text" name="codigoDisciplina"/>

@@ -11,10 +11,10 @@
 </head>
 <body>
 
-	<a href="/alocarsalas/index.jsp">Home</a>
-	<a href="/alocarsalas/cadastrarProfessor.jsp">Adicionar</a>
-	<a href="/alocarsalas/editarProfessor.jsp">Editar</a>
-	<a href="/alocarsalas/excluirProfessor.jsp">Excluir</a>
+	<a href="../index.jsp">Home</a>
+	<a href="/cadastrarProfessor.jsp">Adicionar</a>
+	<a href="/editarProfessor.jsp">Editar</a>
+	<a href="/excluirProfessor.jsp">Excluir</a>
 	<br/>
 	<br/>
 	

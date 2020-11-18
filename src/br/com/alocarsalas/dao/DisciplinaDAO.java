@@ -179,6 +179,7 @@ public class DisciplinaDAO {
 	    	            pst.setString(5,disciplina.getDiaAula());
 	    	            pst.setString(6,disciplina.getInicioAula());
 	    	            pst.setString(7,disciplina.getFimAula());
+	    	            pst.setInt(8,disciplina.getCodigo());
 	    	            pst.execute();
 	    	            pst.close();
 	    	        } catch (SQLException e) {

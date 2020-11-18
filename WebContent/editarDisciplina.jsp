@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Cadastro Disciplina</title>
 </head>
-<a href="/alocarsalas/index.jsp">Home</a>
+<a href="../index.jsp">Home</a>
 <br/>
 
 <body>

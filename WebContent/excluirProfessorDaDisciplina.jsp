@@ -9,7 +9,7 @@
 <title>Excluir Professor da Disciplina</title>
 </head>
 <body>
-<a href="/alocarsalas/index.jsp">Home</a>
+<a href="../index.jsp">Home</a>
 <br/>
 	<form action="${linkServletExcluirProfessorDaDisciplina}" method="get">		
 		Código Disciplina: <input type="text" name="codigoDisciplina"/>

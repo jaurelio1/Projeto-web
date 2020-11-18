@@ -109,13 +109,14 @@ public class ProfessorDAO {
 	    		this.salvar(professor);
 	    	}
 	    	else {
-	    		 String sql = "update professor set matricula =?, nome =?, cargaHoraria=? where codigo=?";
+	    		 String sql = "update professor set matricula =?, nome =?, cargaHoraria=? where matricula=?";
 	    		 
 	    		 PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
 	    	        try {
 	    	            pst.setInt(1,professor.getMatricula());
 	    	            pst.setString(2,professor.getNome());
 	    	            pst.setInt(3,professor.getCargaHoraria());
+	    	            pst.setInt(4,professor.getMatricula());
 	    	            pst.execute();
 	    	            pst.close();
 	    	        } catch (SQLException e) {
