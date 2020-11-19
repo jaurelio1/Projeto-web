@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.alocarsalas.data.SingletonConexao;
+import br.com.alocarsalas.data.ConexaoBancoDeDados;
 import br.com.alocarsalas.model.Disciplina;
 
 public class DisciplinaDAO {
@@ -14,7 +14,7 @@ public class DisciplinaDAO {
 		
         String sql = "INSERT  INTO disciplina (nome,codigo,quantidadeAlunos,cargaHoraria,diaAula,inicioAula,fimAula,idSala) VALUES(?,?,?,?,?,?,?,?) ";
 
-        PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+        PreparedStatement pst = ConexaoBancoDeDados.getPreparedStatement(sql);
         
         try {
 
@@ -28,11 +28,12 @@ public class DisciplinaDAO {
             pst.setInt(8,d.getSala().getCodigo());
             pst.execute();
             pst.close();
-
+    
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        
+        ConexaoBancoDeDados.closeConexao(pst);
     }
 	
 	
@@ -44,7 +45,7 @@ public class DisciplinaDAO {
 	    Disciplina retorno = null;
 	    SalaDAO salaDAO = new SalaDAO();
 
-	    PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+	    PreparedStatement pst =  ConexaoBancoDeDados.getPreparedStatement(sql);
 	    try {
 
 	    	pst.setInt(1, id);
@@ -63,11 +64,16 @@ public class DisciplinaDAO {
 	            retorno.setSala(salaDAO.buscar(res.getInt("idSala")));
 	            
 	        }
+	        
+	        pst.close();
+	        res.close();
 
 	    } catch (SQLException ex) {
 	        System.out.println(ex);
 
 	    }
+	    
+	    ConexaoBancoDeDados.closeConexao();
 		return retorno;
 	}
 	
@@ -77,7 +83,7 @@ public class DisciplinaDAO {
 
 	        ArrayList<Disciplina> retorno = new ArrayList<Disciplina>();
 
-	        PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+	        PreparedStatement pst =  ConexaoBancoDeDados.getPreparedStatement(sql);
 	        
 	        SalaDAO salaDAO = new SalaDAO();
 
@@ -101,9 +107,15 @@ public class DisciplinaDAO {
 	                retorno.add(item);
 
 	            }
+	            
+	            pst.close();
+		        res.close();
+	            
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
+	        
+	        ConexaoBancoDeDados.closeConexao();
 	        return retorno;
 
 	    }
@@ -114,7 +126,7 @@ public class DisciplinaDAO {
 
 	        ArrayList<Disciplina> retorno = new ArrayList<Disciplina>();
 
-	        PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+	        PreparedStatement pst =  ConexaoBancoDeDados.getPreparedStatement(sql);
 	        
 	        SalaDAO salaDAO = new SalaDAO();
 
@@ -139,9 +151,15 @@ public class DisciplinaDAO {
 	                retorno.add(item);
 
 	            }
+	            
+	            pst.close();
+		        res.close();
+	            
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
+	        
+	        ConexaoBancoDeDados.closeConexao();
 	        return retorno;
 
 	    }
@@ -150,7 +168,7 @@ public class DisciplinaDAO {
 
 	        String sql = "delete from disciplina where codigo=?";
 
-	        PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+	        PreparedStatement pst = ConexaoBancoDeDados.getPreparedStatement(sql);
 
 	        try {
 	            pst.setInt(1, codigo);
@@ -159,7 +177,7 @@ public class DisciplinaDAO {
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
-
+	        ConexaoBancoDeDados.closeConexao();
 	    }
 	  
 	  public void editar(Disciplina disciplina)  {
@@ -170,7 +188,7 @@ public class DisciplinaDAO {
 	    	else {
 	    		 String sql = "update disciplina set nome =?, codigo =?,quantidadeAlunos=?, cargaHoraria=?, diaAula=?, inicioAula=?, fimAula=?  where codigo=?";
 	    		 
-	    		 PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+	    		 PreparedStatement pst = ConexaoBancoDeDados.getPreparedStatement(sql);
 	    	        try {
 	    	            pst.setString(1,disciplina.getNome());
 	    	            pst.setInt(2,disciplina.getCodigo());
@@ -186,7 +204,7 @@ public class DisciplinaDAO {
 	    	            e.printStackTrace();
 	    	        }
 	    	}
-	       
+	    	 ConexaoBancoDeDados.closeConexao();
 	    }
 	
 	

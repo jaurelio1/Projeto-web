@@ -10,6 +10,7 @@
 </head>
 <body>
 <a href="../index.jsp">Home</a>
+<a href="/disciplina/listarDisciplina">Voltar</a>
 <br/>
 	<form action="${linkServletCadastroProfessorNaDisciplina}" method="post">		
 		Código Disciplina: <input type="text" name="codigoDisciplina"/>

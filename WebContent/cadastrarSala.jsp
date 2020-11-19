@@ -10,6 +10,7 @@
 </head>
 <body>
 <a href="../index.jsp">Home</a>
+<a href="/sala/listarSala">Voltar</a>
 <br/>
 
 	<form action="${linkServletCadastroSala}" method="post">

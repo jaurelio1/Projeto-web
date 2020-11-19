@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.alocarsalas.data.SingletonConexao;
+import br.com.alocarsalas.data.ConexaoBancoDeDados;
 import br.com.alocarsalas.model.Sala;
 
 public class SalaDAO {
@@ -16,7 +16,7 @@ public class SalaDAO {
 
 	    Sala retorno = null;
 
-	    PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+	    PreparedStatement pst =  ConexaoBancoDeDados.getPreparedStatement(sql);
 	    try {
 
 	    	pst.setInt(1, codigo);
@@ -28,11 +28,15 @@ public class SalaDAO {
 	            retorno.setCodigo(res.getInt("codigo"));
 	            retorno.setNome(res.getString("nome"));
 	        }
-
+	        
+	        pst.close();
+	        res.close();
+	        
 	    } catch (SQLException ex) {
 	        System.out.println(ex);
 
 	    }
+	    ConexaoBancoDeDados.closeConexao();
 		return retorno;
 	}
 
@@ -41,7 +45,7 @@ public class SalaDAO {
 		
 		String sql = "INSERT  INTO sala (codigo,nome) VALUES(?,?) ";
 
-        PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+        PreparedStatement pst = ConexaoBancoDeDados.getPreparedStatement(sql);
 
         try {
 
@@ -53,6 +57,7 @@ public class SalaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        ConexaoBancoDeDados.closeConexao();
 	}
 	
 	public ArrayList<Sala> listarTudo()  {
@@ -60,7 +65,7 @@ public class SalaDAO {
 
         ArrayList<Sala> retorno = new ArrayList<Sala>();
 
-        PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+        PreparedStatement pst =  ConexaoBancoDeDados.getPreparedStatement(sql);
 
         ResultSet res = null;
         
@@ -76,9 +81,15 @@ public class SalaDAO {
                 retorno.add(item);
 
             }
+            
+            pst.close();
+            res.close();
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
+        ConexaoBancoDeDados.closeConexao();
         return retorno;
 
     }
@@ -88,7 +99,7 @@ public class SalaDAO {
 
         String sql = "delete from sala where codigo=?";
 
-        PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+        PreparedStatement pst = ConexaoBancoDeDados.getPreparedStatement(sql);
 
         try {
             pst.setInt(1,codigo);
@@ -97,7 +108,7 @@ public class SalaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        ConexaoBancoDeDados.closeConexao();
     }
     
     public	void editar(Sala sala)  {
@@ -108,7 +119,7 @@ public class SalaDAO {
     	else {
     		 String sql = "update sala set codigo =?, nome =? where codigo=?";
     		 
-    		 PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+    		 PreparedStatement pst = ConexaoBancoDeDados.getPreparedStatement(sql);
     	        try {
     	            pst.setInt(1,sala.getCodigo());
     	            pst.setString(2,sala.getNome());
@@ -119,7 +130,7 @@ public class SalaDAO {
     	            e.printStackTrace();
     	        }
     	}
-       
+    	 ConexaoBancoDeDados.closeConexao();
     }
     
 }

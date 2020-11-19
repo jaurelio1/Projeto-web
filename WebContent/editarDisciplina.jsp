@@ -9,6 +9,7 @@
 <title>Cadastro Disciplina</title>
 </head>
 <a href="../index.jsp">Home</a>
+<a href="/disciplina/listarDisciplina">Voltar</a>
 <br/>
 
 <body>

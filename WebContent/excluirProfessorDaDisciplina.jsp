@@ -10,6 +10,7 @@
 </head>
 <body>
 <a href="../index.jsp">Home</a>
+<a href="/disciplina/listarDisciplina">Voltar</a>
 <br/>
 	<form action="${linkServletExcluirProfessorDaDisciplina}" method="get">		
 		Código Disciplina: <input type="text" name="codigoDisciplina"/>

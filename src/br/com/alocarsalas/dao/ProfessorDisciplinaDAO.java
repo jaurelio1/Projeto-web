@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.alocarsalas.data.SingletonConexao;
+import br.com.alocarsalas.data.ConexaoBancoDeDados;
 import br.com.alocarsalas.model.Disciplina;
 import br.com.alocarsalas.model.Professor;
 import br.com.alocarsalas.model.ProfessorDisciplina;
@@ -20,7 +20,7 @@ public class ProfessorDisciplinaDAO {
 
         ProfessorDAO pDAO = new ProfessorDAO();
         
-        PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+        PreparedStatement pst =  ConexaoBancoDeDados.getPreparedStatement(sql);
 
         ResultSet res = null;
 
@@ -33,10 +33,15 @@ public class ProfessorDisciplinaDAO {
                 Professor item = pDAO.buscar(res.getInt("idProfessor"));
                 retorno.add(item);
             }
+            
+            pst.close();
+            res.close();
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        
+        ConexaoBancoDeDados.closeConexao();
         return retorno;
 
     }
@@ -46,7 +51,7 @@ public class ProfessorDisciplinaDAO {
 
         List<Disciplina> retorno = new ArrayList<Disciplina>();
 
-        PreparedStatement pst =  SingletonConexao.getPreparedStatement(sql);
+        PreparedStatement pst =  ConexaoBancoDeDados.getPreparedStatement(sql);
         
         DisciplinaDAO dDAO = new DisciplinaDAO();
 
@@ -62,10 +67,14 @@ public class ProfessorDisciplinaDAO {
 
                 retorno.add(item);
             }
+            
+            pst.close();
+            res.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        
+        ConexaoBancoDeDados.closeConexao();
         return retorno;
 
     }
@@ -75,7 +84,7 @@ public class ProfessorDisciplinaDAO {
 		
         String sql = "INSERT  INTO professor_disciplina (idProfessor, idDisciplina) VALUES(?,?) ";
 
-        PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+        PreparedStatement pst = ConexaoBancoDeDados.getPreparedStatement(sql);
     
         try {
 
@@ -88,14 +97,14 @@ public class ProfessorDisciplinaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        ConexaoBancoDeDados.closeConexao();
     }
 	
 	  public void remover(int idProfessor, int idDisciplina)  {
 
 	        String sql = "delete from professor_disciplina where idProfessor=? and idDisciplina=?";
 
-	        PreparedStatement pst = SingletonConexao.getPreparedStatement(sql);
+	        PreparedStatement pst = ConexaoBancoDeDados.getPreparedStatement(sql);
 
 	        try {
 	            pst.setInt(1,idProfessor);
@@ -105,7 +114,7 @@ public class ProfessorDisciplinaDAO {
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
-
+	        ConexaoBancoDeDados.closeConexao();
 	    }
 	
 }
